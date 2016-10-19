@@ -2134,7 +2134,9 @@ public class Preprocessor implements Iterator<Syntax> {
   private Error errorDirective(Directive directive, int s) {
     // Error location 26
     if (showErrors) {
-      error(directive.getTokenText());
+      error(directive.getTokenText()
+        + "at: " + ((directive.getLocation() == null)?"null":directive.getLocation().toString()) + "\n"
+        + "pc: " + presenceConditionManager.reference() );
     }
 
     if (EMPTY_INVALID_BRANCHES) {
@@ -5210,7 +5212,8 @@ public class Preprocessor implements Iterator<Syntax> {
    * @param msg The error message.
    */
   private void error(String msg) {
-    System.err.println("error: " + msg);
+//    new Exception().printStackTrace();
+    System.err.println("error:(5) " + msg + "\n");
   }
 
   /**

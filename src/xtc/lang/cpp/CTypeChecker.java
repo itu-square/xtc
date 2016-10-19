@@ -656,7 +656,7 @@ public class CTypeChecker extends CActionsInterface {
   }
 
   private void error(String msg) {
-    System.err.println("error: " + msg);
+    System.err.println("error:(3) " + msg);
     System.exit(1);
   }
 

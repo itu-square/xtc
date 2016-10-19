@@ -975,9 +975,8 @@ public class ForkMergeParser {
       error("parse error on "
             + (subparser.lookahead.token.syntax.kind()
                == Kind.EOF ? "EOF"
-               : "\"" + subparser.lookahead.token.syntax + "\"")
-            + " at "
-            + subparser.lookahead.token.syntax.getLocation());
+               : "\"" + subparser.lookahead.token.syntax + "\"") + "\n"
+            + " at: " + subparser.lookahead.token.syntax.getLocation());
     }
 
     if (SAVE_ERROR_COND) {
@@ -3215,7 +3214,7 @@ public class ForkMergeParser {
   }
 
   private void error(String msg) {
-    System.err.println("error: " + msg);
+    System.err.println("error:(1) " + msg + "\n");
   }
 
   /**

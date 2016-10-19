@@ -583,7 +583,7 @@ public abstract class ParserBase {
     }
 
     // The error's actual message.
-    buf.append("error: ");
+    buf.append("error:(6) ");
     buf.append(error.msg);
 
     // The error's line with a position marker.

@@ -280,7 +280,7 @@ public class Tool {
      */
     public void error(String s) {
         hasError = true;
-        System.err.println("error: " + s);
+        System.err.println("error:(7) " + s);
     }
 
     /** Issue an error with line number information
@@ -590,7 +590,7 @@ public static Object factory2 (String p, Object[] initargs) {
      * @param s The message
      */
     public void toolError(String s) {
-        System.err.println("error: " + s);
+        System.err.println("error:(8) " + s);
     }
 
     /** Issue a warning

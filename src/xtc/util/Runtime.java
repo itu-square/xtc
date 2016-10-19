@@ -997,7 +997,7 @@ public class Runtime {
    * @param msg The error message.
    */
   public void error(String msg) {
-    errConsole.p("error: ").pln(msg).flush();
+    errConsole.p("error:(2) ").pln(msg).flush();
     errors++;
   }
   
