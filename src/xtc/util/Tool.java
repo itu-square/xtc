@@ -23,13 +23,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-
+import java.lang.reflect.Array;
 import java.text.DateFormat;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 import xtc.Constants;
-
+import xtc.lang.cpp.PresenceConditionManager;
 import xtc.parser.ParseException;
 
 import xtc.tree.Printer;
@@ -49,6 +49,10 @@ public abstract class Tool {
 
   /** Create a new tool. */
   public Tool() {
+	Tool.outputAST = null;
+	Tool.outputPCManager = null;
+	Tool.outputErrors = new ArrayList<String>();
+	Tool.outputFullContent = "";
     runtime = new Runtime();
   }
 
@@ -90,6 +94,11 @@ public abstract class Tool {
   public String getExplanation() {
     return null;
   }
+
+  public static Node outputAST;
+  public static PresenceConditionManager outputPCManager;
+  public static ArrayList<String> outputErrors = new ArrayList<String>();
+  public static String outputFullContent;
 
   /**
    * Initialize this tool.  This method declares this tool's command
@@ -259,7 +268,7 @@ public abstract class Tool {
    * @param node The node.
    */
   public void process(Node node) {
-    // Nothing to do.
+    Tool.outputAST = node;
   }
 
   /**
@@ -523,6 +532,7 @@ public abstract class Tool {
             System.err.print(x.getMessage());
 
           } catch (Throwable x) {
+        	  System.err.println("here");
             runtime.error();
             x.printStackTrace();
 

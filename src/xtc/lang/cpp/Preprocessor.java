@@ -53,7 +53,7 @@ import xtc.lang.cpp.MacroTable.Entry;
 import xtc.lang.cpp.PresenceConditionManager.PresenceCondition;
 
 import xtc.tree.Location;
-
+import xtc.util.Tool;
 import net.sf.javabdd.BDD;
 
 /**
@@ -2136,7 +2136,7 @@ public class Preprocessor implements Iterator<Syntax> {
     if (showErrors) {
       error(directive.getTokenText()
         + "at: " + ((directive.getLocation() == null)?"null":directive.getLocation().toString()) + "\n"
-        + "pc: " + presenceConditionManager.reference() );
+        + "pc: " + presenceConditionManager.reference().getAllConfigs().toString());
     }
 
     if (EMPTY_INVALID_BRANCHES) {
@@ -4382,6 +4382,10 @@ public class Preprocessor implements Iterator<Syntax> {
     boolean hasConditional = false;
     while (null != syntax) {
       if (syntax.kind() == Kind.CONDITIONAL) {
+    	if (syntax.toConditional().presenceCondition == null) {
+    	  System.err.println("syntax : " + syntax.getClass() + "  " + (syntax.toConditional().presenceCondition == null) + "  " + syntax.getLocation());
+    	  System.err.println("syntax content : " + syntax.toString());
+    	}
         newList.add(buildBlock(syntax.toConditional(), tpresenceCondition,
                                global));
         hasConditional = true;
@@ -4423,7 +4427,11 @@ public class Preprocessor implements Iterator<Syntax> {
     List<Syntax> branch = new LinkedList<Syntax>();
     branches.add(branch);
     
+    if(start.presenceCondition == null) System.err.println("pc is null before: " + (start.presenceCondition == null));
     presenceConditions.add(start.presenceCondition);
+    if(start.presenceCondition == null) {
+    	System.err.println("pc is null after: " + (start.presenceCondition == null));
+    }
     start.presenceCondition.addRef();
     
     Syntax syntax = streamin.next();
@@ -5212,8 +5220,8 @@ public class Preprocessor implements Iterator<Syntax> {
    * @param msg The error message.
    */
   private void error(String msg) {
-//    new Exception().printStackTrace();
-    System.err.println("error:(5) " + msg + "\n");
+    Tool.outputErrors.add("error:(5) " + msg);
+//    System.err.println("error:(5) " + msg + "\n");
   }
 
   /**

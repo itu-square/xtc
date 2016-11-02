@@ -44,7 +44,7 @@ import net.sf.javabdd.BDD;
   * @author Paul Gazzillo
   * @version $Revision: 1.14 $
   */
-class PresenceConditionManager {
+public class PresenceConditionManager {
 
   /** The BDD factory. */
   private BDDFactory B;
@@ -609,6 +609,17 @@ class PresenceConditionManager {
 
     return allConfigs;
   }
+  
+  
+  
+  public PresenceCondition newPresenceCondition(BDD bdd){
+    return new PresenceCondition(bdd);
+  }
+  
+  public PresenceCondition newPresenceCondition(boolean value){
+    return new PresenceCondition(value);
+  }
+  
   
   /** A reference-counted presence condition that automatically cleans up BDD when
     * nothing references it anymore.

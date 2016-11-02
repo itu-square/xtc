@@ -568,6 +568,7 @@ public class SuperC extends Tool {
       .getConfigurationVariables(runtime.test("configurationVariables"));
     macroTable.getHeaderGuards(runtime.test("headerGuards"));
     presenceConditionManager = new PresenceConditionManager();
+    Tool.outputPCManager = presenceConditionManager;
     if (runtime.test("checkExpressionParser")) {
       expressionParser = ExpressionParser.comparator(presenceConditionManager);
     } else {
@@ -587,6 +588,9 @@ public class SuperC extends Tool {
       // conditional
       conditionEvaluator.restrictPrefix(runtime.getString("restrictConfigToPrefix"));
     }
+    
+    // an accumulator for the full content
+    StringBuilder content = new StringBuilder();
 
     if (null != commandline) {
       Syntax syntax;
@@ -597,6 +601,9 @@ public class SuperC extends Tool {
       catch (Exception e) {
         e.printStackTrace();
       }
+      
+      // accumulate the command line options
+      (new BufferedReader(commandline).lines()).forEach(x -> content.append(x+"\n"));
 
       fileManager = new HeaderFileManager(commandline,
                                           new File("<command-line>"),
@@ -627,7 +634,13 @@ public class SuperC extends Tool {
       commandline = null;
     }
     
-    fileManager = new HeaderFileManager(in, file, iquote, I, sysdirs,
+    // accumulate the input file
+    (new BufferedReader(in).lines()).forEach(x -> content.append(x+"\n"));
+    
+    Tool.outputFullContent = content.toString();
+    
+    fileManager = new HeaderFileManager(new StringReader(content.toString()), file, iquote, I, sysdirs,
+//    fileManager = new HeaderFileManager(in, file, iquote, I, sysdirs,
                                         tokenCreator, lexerTimer,
                                         runtime.getString(xtc.util.Runtime.INPUT_ENCODING));
     fileManager.collectStatistics(runtime.test("statisticsPreprocessor"));

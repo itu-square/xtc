@@ -26,6 +26,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.tools.Tool;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.List;
@@ -976,7 +979,7 @@ public class ForkMergeParser {
             + (subparser.lookahead.token.syntax.kind()
                == Kind.EOF ? "EOF"
                : "\"" + subparser.lookahead.token.syntax + "\"") + "\n"
-            + " at: " + subparser.lookahead.token.syntax.getLocation());
+            + "      at: " + subparser.lookahead.token.syntax.getLocation());
     }
 
     if (SAVE_ERROR_COND) {
@@ -3214,7 +3217,8 @@ public class ForkMergeParser {
   }
 
   private void error(String msg) {
-    System.err.println("error:(1) " + msg + "\n");
+	xtc.util.Tool.outputErrors.add("error:(1) " + msg);
+//    System.err.println("error:(1) " + msg + "\n");
   }
 
   /**

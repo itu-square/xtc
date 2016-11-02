@@ -702,8 +702,11 @@ public class HeaderFileManager implements Iterator<Syntax> {
       }
       
       if (showErrors) {
-        System.err.println("error:(9) header " + headerName + " not found" + "\n"
-          + "at: " + include.getLocation() + "\n" );
+    	xtc.util.Tool.outputErrors.add(
+    	    "error:(9) header " + headerName + " not found" + "\n"
+    	  + "     at: " + include.getLocation());
+//        System.err.println("error:(9) header " + headerName + " not found" + "\n"
+//          + "at: " + include.getLocation() + "\n" );
       }
       
       return null;
