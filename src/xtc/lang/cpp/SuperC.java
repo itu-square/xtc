@@ -295,6 +295,8 @@ public class SuperC extends Tool {
            "Print all tokens of the all yes configuration of the AST.").
       bool("configureAllNo", "configureAllNo", false,
            "Print all tokens of the all no configuration of the AST.").
+      bool("saveLayoutTokens", "saveLayoutTokens", false,
+              "Separate setting for preserving layout tokens in the AST.").
       word("configureExceptions", "configureExceptions", false,
            "Add exceptions to the all yes or no configuration.").
       word("configFile", "configFile", false,
@@ -1053,7 +1055,8 @@ public class SuperC extends Tool {
       parser.saveLayoutTokens(runtime.test("printSource") 
                               || runtime.test("configureAllYes")
                               || runtime.test("configureAllNo")
-                              || runtime.getString("configFile") != null);
+                              || runtime.getString("configFile") != null
+                              || runtime.test("saveLayoutTokens"));
       parser.setLazyForking(runtime.test("optimizeLazyForking"));
       parser.setSharedReductions(runtime.test("optimizeSharedReductions"));
       parser.setEarlyReduce(runtime.test("optimizeEarlyReduce"));
