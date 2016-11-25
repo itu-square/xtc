@@ -1,5 +1,5 @@
-JAVA_DEV_ROOT=~/repos/models-team-xtc
-CLASSPATH=~/repos/models-team-xtc/classes:~/repos/models-team-xtc/bin/junit.jar:~/repos/models-team-xtc/bin/javabdd.jar:~/repos/models-team-xtc/bin/org.sat4j.core.jar
+JAVA_DEV_ROOT=/home/alex/reconfigurator/xtc
+CLASSPATH=$JAVA_DEV_ROOT/classes:$JAVA_DEV_ROOT/bin/junit.jar:$JAVA_DEV_ROOT/bin/javabdd.jar:$JAVA_DEV_ROOT/bin/org.sat4j.core.jar
 JAVA_HOME=/usr/bin
 PATH_SEP=:
 export JAVA_DEV_ROOT CLASSPATH JAVA_HOME PATH_SEP

@@ -22,7 +22,7 @@ package xtc.lang.cpp;
   */
 public class Builtins {
   /** The system include directories */
-  public static String[] sysdirs = { "/usr/lib/gcc/x86_64-linux-gnu/5/include", "/usr/local/include", "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed", "/usr/include/x86_64-linux-gnu", "/usr/include" };
+  public static String[] sysdirs = { "/usr/lib/gcc/x86_64-linux-gnu/6/include", "/usr/local/include", "/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed", "/usr/include/x86_64-linux-gnu", "/usr/include" };
 
   /** A string containing the built-in macro definitions */
   public static final String builtin =
@@ -97,7 +97,8 @@ public class Builtins {
     "#define __gnu_linux__ 1\n" +
     "#define __has_include_next(STR) __has_include_next__(STR)\n" +
     "#define __LDBL_HAS_QUIET_NAN__ 1\n" +
-    "#define __GNUC__ 5\n" +
+    "#define __GNUC__ 6\n" +
+    "#define __pie__ 2\n" +
     "#define __MMX__ 1\n" +
     "#define __FLT_HAS_DENORM__ 1\n" +
     "#define __SIZEOF_LONG_DOUBLE__ 16\n" +
@@ -123,10 +124,11 @@ public class Builtins {
     "#define __SIZEOF_SIZE_T__ 8\n" +
     "#define __SIZEOF_WINT_T__ 4\n" +
     "#define __GCC_HAVE_DWARF2_CFI_ASM 1\n" +
-    "#define __GXX_ABI_VERSION 1009\n" +
+    "#define __GXX_ABI_VERSION 1010\n" +
     "#define __FLT_MIN_EXP__ (-125)\n" +
     "#define __INT_FAST64_TYPE__ long int\n" +
     "#define __DBL_MIN__ ((double)2.22507385850720138309e-308L)\n" +
+    "#define __PIE__ 2\n" +
     "#define __LP64__ 1\n" +
     "#define __DECIMAL_BID_FORMAT__ 1\n" +
     "#define __DEC128_MIN__ 1E-6143DL\n" +
@@ -136,7 +138,7 @@ public class Builtins {
     "#define __UINT8_TYPE__ unsigned char\n" +
     "#define __NO_INLINE__ 1\n" +
     "#define __FLT_MANT_DIG__ 24\n" +
-    "#define __VERSION__ \"5.4.0 20160609\"\n" +
+    "#define __VERSION__ \"6.2.0 20161005\"\n" +
     "#define __UINT64_C(c) c ## UL\n" +
     "#define _STDC_PREDEF_H 1\n" +
     "#define __GCC_ATOMIC_INT_LOCK_FREE 2\n" +
@@ -154,6 +156,7 @@ public class Builtins {
     "#define __UINT64_MAX__ 0xffffffffffffffffUL\n" +
     "#define __INT8_TYPE__ signed char\n" +
     "#define __ELF__ 1\n" +
+    "#define __GCC_ASM_FLAG_OUTPUTS__ 1\n" +
     "#define __FLT_RADIX__ 2\n" +
     "#define __INT_LEAST16_TYPE__ short int\n" +
     "#define __LDBL_EPSILON__ 1.08420217248550443401e-19L\n" +
@@ -177,10 +180,12 @@ public class Builtins {
     "#define __DEC64_MAX__ 9.999999999999999E384DD\n" +
     "#define __CHAR16_TYPE__ short unsigned int\n" +
     "#define __PRAGMA_REDEFINE_EXTNAME 1\n" +
+    "#define __SEG_FS 1\n" +
     "#define __INT_LEAST16_MAX__ 0x7fff\n" +
     "#define __DEC64_MANT_DIG__ 16\n" +
     "#define __INT64_MAX__ 0x7fffffffffffffffL\n" +
     "#define __UINT_LEAST32_MAX__ 0xffffffffU\n" +
+    "#define __SEG_GS 1\n" +
     "#define __GCC_ATOMIC_LONG_LOCK_FREE 2\n" +
     "#define __INT_LEAST64_TYPE__ long int\n" +
     "#define __INT16_TYPE__ short int\n" +
@@ -200,6 +205,7 @@ public class Builtins {
     "#define __UINT16_TYPE__ short unsigned int\n" +
     "#define __WCHAR_TYPE__ int\n" +
     "#define __SIZEOF_FLOAT__ 4\n" +
+    "#define __pic__ 2\n" +
     "#define __UINTPTR_MAX__ 0xffffffffffffffffUL\n" +
     "#define __DEC64_MIN_EXP__ (-382)\n" +
     "#define __INT_FAST64_MAX__ 0x7fffffffffffffffL\n" +
@@ -242,6 +248,7 @@ public class Builtins {
     "#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__\n" +
     "#define __FLT_DENORM_MIN__ 1.40129846432481707092e-45F\n" +
     "#define __INT8_MAX__ 0x7f\n" +
+    "#define __PIC__ 2\n" +
     "#define __UINT_FAST32_TYPE__ long unsigned int\n" +
     "#define __CHAR32_TYPE__ unsigned int\n" +
     "#define __FLT_MAX__ 3.40282346638528859812e+38F\n" +
@@ -251,7 +258,7 @@ public class Builtins {
     "#define __INTMAX_TYPE__ long int\n" +
     "#define __DEC128_MAX_EXP__ 6145\n" +
     "#define __ATOMIC_CONSUME 1\n" +
-    "#define __GNUC_MINOR__ 4\n" +
+    "#define __GNUC_MINOR__ 2\n" +
     "#define __UINTMAX_MAX__ 0xffffffffffffffffUL\n" +
     "#define __DEC32_MANT_DIG__ 7\n" +
     "#define __DBL_MAX_10_EXP__ 308\n" +
